@@ -9,8 +9,12 @@ export const UserNavbar = () => {
     { name: 'Dashboard', path: '' },
     { name: 'Add-Category', path: 'add-category' },
     { name: 'my-categories', path: 'my-categories' },
-    { name: 'Profile', path: 'profile' },
-    { name: 'Settings', path: 'settings' },
+    {name:'add-expense',path:'add-expense'},
+    { name: 'My-expenses', path: 'my-expenses' },
+    { name: 'reports', path: 'reports' },
+    { name: 'user-profile', path: 'User-profile' },
+    
+
   ];
 
   return (

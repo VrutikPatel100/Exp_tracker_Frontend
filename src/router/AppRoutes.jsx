@@ -8,6 +8,9 @@ import { AddExpense } from "../user/AddExpence"
 import { MyExpenses } from "../user/MyExpenses"
 import { Report } from "../user/Report"
 import { UserProfile } from "../user/UserProfile"
+import { MyBudget } from "../user/MyBudget"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 const AppRoutes = ()=>{
 
@@ -39,6 +42,10 @@ const AppRoutes = ()=>{
                     element:<MyExpenses/>
                 },
                 {
+                    path:"budget",
+                    element:<MyBudget/>
+                },
+                {
                     path:"reports",
                     element:<Report/>
                 },
@@ -54,7 +61,12 @@ const AppRoutes = ()=>{
         // }
     ])
 
-    return <RouterProvider router={router} />
+    return (
+        <>
+            <RouterProvider router={router} />
+            <ToastContainer position="top-right" autoClose={3000} theme="dark" />
+        </>
+    )
 
 }
 export default AppRoutes;

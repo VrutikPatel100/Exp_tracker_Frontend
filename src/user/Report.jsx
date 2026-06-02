@@ -58,9 +58,12 @@ export const Report = () => {
             getMyExpenses();
     },[])
   return (
-    <div style={{textAlign:"center"}}>
-        <h1>EXPENSE REPORT</h1>
-        <Pie data={data}></Pie>
+    <div style={{ textAlign: "center", padding: "20px" }}>
+        <h1 style={{ marginBottom: "20px", fontWeight: "bold" }}>EXPENSE REPORT</h1>
+        <div style={{ maxWidth: "400px", margin: "0 auto", position: "relative" }}>
+            <Pie data={data} options={{ responsive: true, maintainAspectRatio: true }} />
+        </div>
     </div>
   )
 }
+export default Report;

@@ -89,7 +89,11 @@ export const ExpenseDashboard = () => {
       }
     } catch (err) {
       console.error("Dashboard loading error:", err);
-      toast.error("Failed to load dashboard statistics");
+      if (err.response?.status === 401) {
+        navigate("/login");
+      } else {
+        toast.error("Failed to load dashboard statistics");
+      }
     } finally {
       setLoading(false);
     }
@@ -555,20 +559,6 @@ export const ExpenseDashboard = () => {
 
         </div>
 
-        {/* ALERTS & NOTIFICATIONS */}
-        {stats.exceededBudgetsCount > 0 && (
-          <div className="bg-rose-500/10 border border-rose-500/30 rounded-3xl p-5 flex items-start gap-4 shadow-lg animate-pulse">
-            <div className="bg-rose-500/20 p-2.5 rounded-2xl text-rose-500 mt-0.5 animate-bounce">
-              <AlertTriangle size={20} />
-            </div>
-            <div>
-              <h3 className="text-sm font-bold text-rose-500 uppercase tracking-wider">Critical Budget Alert</h3>
-              <p className={`${isDarkMode ? "text-rose-200/80" : "text-rose-700"} text-xs mt-1`}>
-                You have exceeded the limits on <span className="font-extrabold">{stats.exceededBudgetsCount} active budget(s)</span>. Check your spending parameters under the Budget limits menu to review and adapt them.
-              </p>
-            </div>
-          </div>
-        )}
 
         {/* CHARTS PANEL */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

@@ -13,25 +13,26 @@ export const Login = () => {
     const navigate = useNavigate()
 
   const onSubmit = async(data) => {
-    
-    console.log('Login Data:', data);
-    const res = await axios.post("/user/login",data)
+    try {
+      console.log('Login Data:', data);
+      const res = await axios.post("/user/login", data)
 
       console.log(res)
-    
-    // Store token in localStorage (standard for JWT Bearer tokens)
-    console.log(res.data.token)
-    localStorage.setItem("token", res.data.token);
-    
-    // Fallback to cookie without `secure` so it works on localhost HTTP
-    document.cookie = `token=${res.data.token}; path=/; sameSite=Lax`;
+      // Store token in localStorage (standard for JWT Bearer tokens)
+      console.log(res.data.token)
+      localStorage.setItem("token", res.data.token);
+      
+      // Fallback to cookie without `secure` so it works on localhost HTTP
+      document.cookie = `token=${res.data.token}; path=/; sameSite=Lax`;
 
-     if(res.status==200){
-      //toster..
-      navigate("/")
-    }
-    else{
-      alert("loagin failed..")
+      if (res.status === 200) {
+        navigate("/")
+      } else {
+        alert("Login failed. Please check your credentials.")
+      }
+    } catch (error) {
+      console.error("Login error:", error?.response ?? error)
+      alert(error.response?.data?.message || error.message || "Login failed. Please try again.")
     }
   };
 

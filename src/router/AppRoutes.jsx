@@ -11,6 +11,7 @@ import { UserProfile } from "../user/UserProfile"
 import { MyBudget } from "../user/MyBudget"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import { Signup } from "../common/Signup"
 
 const AppRoutes = ()=>{
 
@@ -19,6 +20,10 @@ const AppRoutes = ()=>{
         {
             path:"/login",
             element:<Login/>
+        },
+        {
+            path:"/signup",
+            element:<Signup/>
         },
         {
             path:"",
